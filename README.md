@@ -147,3 +147,4 @@ Aşağıda, API'nin sunduğu temel endpoint'lerin bir listesi bulunmaktadır:
 | /v1/appointments/{id}/findByDateAndDoctor  | GET         | Belirtilen tarih ve veteriner hekime göre randevuları getir |
 | /v1/appointments/{id}/findByDateAndAnimal  | GET         | Belirtilen tarih ve hayvana göre randevuları getir |
 
+## Resimleri incelemek için [tıklayınız]()
