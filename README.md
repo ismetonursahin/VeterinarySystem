@@ -1,6 +1,6 @@
 # Veteriner Yönetim Sistemi
 
-Veteriner Yönetim Sistemi, hayvan sahipleri, hayvanlar, veteriner hekimler, randevular ve aşılar gibi veterinerlikle ilgili temel kayıtları yönetmek için geliştirilmiş bir REST API projesidir. Bu uygulama veteriner klinikleri tarafından kullanılabilir.
+Veteriner Yönetim Sistemi, hayvan sahipleri, hayvanlar, veteriner hekimler, randevular ve aşılar gibi veterinerlikle ilgili temel kayıtları yönetmek için geliştirilmiş bir REST API projesidir. 
 
 ## Teknolojiler
 
@@ -10,7 +10,7 @@ Veteriner Yönetim Sistemi, hayvan sahipleri, hayvanlar, veteriner hekimler, ran
 - Spring Data JPA
 - PostgreSQL
 - Lombok
-- Mapstruct
+- ModelMapper
 - Postman
 - Swagger
 
@@ -92,18 +92,56 @@ Aşağıda, API'nin sunduğu temel endpoint'lerin bir listesi bulunmaktadır:
 
 | Endpoint                                | HTTP Metodu | Açıklama                                    |
 |-----------------------------------------|-------------|---------------------------------------------|
-| /api/v1/vaccines/{id}                   | GET         | Belirtilen ID'ye sahip aşıyı getir        |
-| /api/v1/vaccines/{id}                   | PUT         | Belirtilen ID'ye sahip aşıyı güncelle     |
-| /api/v1/vaccines/{id}                   | DELETE      | Belirtilen ID'ye sahip aşıyı sil          |
-| /api/v1/vaccines                        | GET         | Tüm aşıları getir                          |
-| /api/v1/vaccines                        | POST        | Aşı ekle                                    |
-| /api/v1/vaccines/finishDate             | GET         | Girilen tarih aralığına göre aşı kayıtları |
-| /api/v1/vaccines/findByAnimalId/{animalId} | GET      | Belirli bir hayvana ait tüm aşı kayıtları  |
+| /v1/vaccines/{id}                       | GET         | Belirtilen ID'ye sahip aşı hangi hayvanlara uygulandığını gösterir       |
+| /v1/vaccines/                           | PUT         | Belirtilen ID'ye sahip aşıyı güncelle     |
+| /v1/vaccines/{id}                       | DELETE      | Belirtilen ID'ye sahip aşıyı sil          |
+| /v1/vaccines                            | GET         | Tüm aşıları getir                          |
+| /v1/vaccines                            | POST        | Aşı ekle                                    |
+| /v1/vaccines/findByDate                 | GET         | Belirli tarihe göre süresi yaklaşan aşıları getirir.  |
 
 | Endpoint                                | HTTP Metodu | Açıklama                                    |
 |-----------------------------------------|-------------|---------------------------------------------|
-| /api/v1/doctors/{id}                    | GET         | Belirtilen ID'ye sahip veteriner hekimini getir |
-| /api/v1/doctors/{id}                    | PUT         | Belirtilen ID'ye sahip veteriner hekimini güncelle |
-| /api/v1/doctors/{id}                    | DELETE      | Belirtilen ID'ye sahip veteriner hekimini sil |
-| /api/v1/doctors                         | GET         | Tüm veteriner hekimlerini getir            |
-| /api/v1/doctors                         | POST        | Veteriner hekimi ekle                      |
+| /v1/doctors/{id}                        | GET         | Belirtilen ID'ye sahip veteriner hekimini getir |
+| /v1/doctors/{                        | PUT         | Belirtilen ID'ye sahip veteriner hekimini güncelle |
+| /v1/doctors/{id}                        | DELETE      | Belirtilen ID'ye sahip veteriner hekimini sil |
+| /v1/doctors                             | GET         | Tüm veteriner hekimlerini getir            |
+| /v1/doctors                             | POST        | Veteriner hekimi ekle                      |
+
+| Endpoint                                | HTTP Metodu | Açıklama                                    |
+|-----------------------------------------|-------------|---------------------------------------------|
+| /v1/customers/{id}                      | GET         | Belirtilen ID'ye sahip hayvan sahibini getir |
+| /v1/customers/                          | PUT         | Belirtilen ID'ye sahip hayvan sahibini güncelle |
+| /v1/customers/{id}                      | DELETE      | Belirtilen ID'ye sahip hayvan sahibini sil |
+| /v1/customers                           | GET         | Tüm hayvan sahiplerini getir               |
+| /v1/customers                           | POST        | Hayvan sahibi ekle                         |
+| /v1/customers/getByName/{name}          | GET         | İsme göre hayvan sahipleri                 |
+| /v1/customers/{id}/animals              | GET         | ID'ye kayıtlı hayvanları getirir.                 |
+
+| Endpoint                             | HTTP Metodu | Açıklama                                    |
+|--------------------------------------|-------------|---------------------------------------------|
+| /v1/animals                          | GET         | Tüm hayvanları getir                       |
+| /v1/animals                          | PUT         | Hayvanı güncelle                           |
+| /v1/animals                          | POST        | Yeni bir hayvan ekle                       |
+| /v1/animals/{id}                     | GET         | Belirtilen ID'ye sahip hayvanı getir       |
+| /v1/animals/{id}                     | DELETE      | Belirtilen ID'ye sahip hayvanı sil         |
+| /v1/animals/{id}/vaccines            | GET         | Belirtilen hayvanın tüm aşılarını getir    |
+| /v1/animals/getByName/{name}         | GET         | İsim ile hayvanları getir                  |
+
+| Endpoint                                | HTTP Metodu | Açıklama                                    |
+|-----------------------------------------|-------------|---------------------------------------------|
+| /v1/available_dates/{id}                | GET         | Belirtilen ID'ye sahip müsait günü getir   |
+| /v1/available_dates/                  | PUT         | Belirtilen ID'ye sahip müsait günü güncelle |
+| /v1/available_dates/{id}                | DELETE      | Belirtilen ID'ye sahip müsait günü sil     |
+| /v1/available_dates                     | GET         | Tüm müsait günleri getir                   |
+| /v1/available_dates                     | POST        | Müsait gün ekle                             |
+
+| Endpoint                                   | HTTP Metodu | Açıklama                                    |
+|--------------------------------------------|-------------|---------------------------------------------|
+| /v1/appointments                           | GET         | Tüm randevuları getir                      |
+| /v1/appointments                           | PUT         | Randevuyu güncelle                         |
+| /v1/appointments                           | POST        | Yeni bir randevu oluştur                   |
+| /v1/appointments/{id}                      | GET         | Belirtilen ID'ye sahip randevuyu getir     |
+| /v1/appointments/{id}                      | DELETE      | Belirtilen ID'ye sahip randevuyu sil       |
+| /v1/appointments/{id}/findByDateAndDoctor  | GET         | Belirtilen tarih ve veteriner hekime göre randevuları getir |
+| /v1/appointments/{id}/findByDateAndAnimal  | GET         | Belirtilen tarih ve hayvana göre randevuları getir |
+
