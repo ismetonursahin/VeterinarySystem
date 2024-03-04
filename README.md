@@ -1,7 +1,9 @@
 # Veteriner Yönetim Sistemi
 
 Veteriner Yönetim Sistemi, hayvan sahipleri, hayvanlar, veteriner hekimler, randevular ve aşılar gibi veterinerlikle ilgili temel kayıtları yönetmek için geliştirilmiş bir REST API projesidir. 
-
+------
+![](veterinary_app/img/uml.png)
+----
 ## Teknolojiler
 
 - Java 17
