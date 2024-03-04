@@ -84,7 +84,7 @@ Proje Spring Boot ile geliştirildiği için, uygulamayı ayağa kaldırmak içi
 2. PostgreSQL veritabanınızı oluşturun ve bağlantı bilgilerini `application.properties` dosyasında güncelleyin.
 3. Projeyi bir IDE'de (IntelliJ IDEA, Eclipse vb.) açın.
 4. `VeterinaryApp` sınıfını bulun ve çalıştırın.
-5. Uygulama başlatıldığında, [http://localhost:8080]([http://localhost:8080](http://localhost:8080/swagger-ui/index.html#/)) adresinden API'ye erişebilirsiniz.
+5. Uygulama başlatıldığında, [http://localhost:8080](http://localhost:8080/swagger-ui/index.html#/) adresinden API'ye erişebilirsiniz.
 
 ## API Endpoints
 
