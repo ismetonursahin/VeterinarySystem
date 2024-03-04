@@ -27,16 +27,18 @@ Veteriner Yönetim Sistemi, hayvan sahipleri, hayvanlar, veteriner hekimler, ran
 | Customer   | Hayvan sahibi bilgilerini tutar  |
 | AvailableDate | Müsait gün bilgilerini tutar   |
 | Appointment | Randevu bilgilerini tutar        |
+| Animal    | Hayvan bilgilerini tutar        |
 
 ### REPOSITORY Tablosu:
 
 | Repository Adı | Açıklama                                   |
 |----------------|--------------------------------------------|
-| VaccineRepository | Aşılarla ilgili veritabanı işlemleri için arayüz |
-| DoctorRepository  | Veteriner hekimleriyle ilgili veritabanı işlemleri için arayüz |
-| CustomerRepository | Hayvan sahipleriyle ilgili veritabanı işlemleri için arayüz |
-| AvailableDateRepository | Müsait günlerle ilgili veritabanı işlemleri için arayüz |
-| AppointmentRepository | Randevularla ilgili veritabanı işlemleri için arayüz |
+| IVaccineRepo | Aşılarla ilgili veritabanı işlemleri için arayüz |
+| IDoctorRepo | Veteriner hekimleriyle ilgili veritabanı işlemleri için arayüz |
+| ICustomerRepo | Hayvan sahipleriyle ilgili veritabanı işlemleri için arayüz |
+| IAvailableDateRepo | Müsait günlerle ilgili veritabanı işlemleri için arayüz |
+| IAppointmentRepo | Randevularla ilgili veritabanı işlemleri için arayüz |
+| IAnimalRepo | Randevularla ilgili veritabanı işlemleri için arayüz |
 
 ### DTO / REQUEST-RESPONSE Tablosu:
 
@@ -48,25 +50,16 @@ Veteriner Yönetim Sistemi, hayvan sahipleri, hayvanlar, veteriner hekimler, ran
 | AvailableDateDTO           | Müsait gün bilgilerini taşır               |
 | AppointmentDTO             | Randevu bilgilerini taşır                  |
 
-### MAPPER Tablosu:
+### MANAGER Tablosu:
 
-| Mapper Adı | Açıklama                                      |
-|------------|-----------------------------------------------|
-| VaccineMapper | Entity ve DTO arasında aşı bilgisi dönüştürme işlemleri için kullanılır |
-| DoctorMapper  | Entity ve DTO arasında veteriner hekim bilgisi dönüştürme işlemleri için kullanılır |
-| CustomerMapper | Entity ve DTO arasında hayvan sahibi bilgisi dönüştürme işlemleri için kullanılır |
-| AvailableDateMapper | Entity ve DTO arasında müsait gün bilgisi dönüştürme işlemleri için kullanılır |
-| AppointmentMapper | Entity ve DTO arasında randevu bilgisi dönüştürme işlemleri için kullanılır |
-
-### SERVICE Tablosu:
-
-| Service Adı | Açıklama                                  |
+| Manager Adı | Açıklama                                  |
 |-------------|-------------------------------------------|
-| VaccineService | Aşılarla ilgili iş katmanı işlemleri için kullanılır |
-| DoctorService  | Veteriner hekimleriyle ilgili iş katmanı işlemleri için kullanılır |
-| CustomerService | Hayvan sahipleriyle ilgili iş katmanı işlemleri için kullanılır |
-| AvailableDateService | Müsait günlerle ilgili iş katmanı işlemleri için kullanılır |
-| AppointmentService | Randevularla ilgili iş katmanı işlemleri için kullanılır |
+| VaccineManager | Aşılarla ilgili iş katmanı işlemleri için kullanılır |
+| DoctorManager  | Veteriner hekimleriyle ilgili iş katmanı işlemleri için kullanılır |
+| CustomerManager | Hayvan sahipleriyle ilgili iş katmanı işlemleri için kullanılır |
+| AvailableDateManager | Müsait günlerle ilgili iş katmanı işlemleri için kullanılır |
+| AppointmentManager | Randevularla ilgili iş katmanı işlemleri için kullanılır |
+| AnimalManager | Hayvanlarla ilgili iş katmanı işlemleri için kullanılır |
 
 ### CONTROLLER Tablosu:
 
@@ -77,6 +70,7 @@ Veteriner Yönetim Sistemi, hayvan sahipleri, hayvanlar, veteriner hekimler, ran
 | CustomerController | Hayvan sahipleriyle ilgili API endpoint'lerini temsil eder |
 | AvailableDateController | Müsait günlerle ilgili API endpoint'lerini temsil eder |
 | AppointmentController | Randevularla ilgili API endpoint'lerini temsil eder |
+| AnimalController | Hayvanlarla ilgili API endpoint'lerini temsil eder |
 
 ## Uygulamayı Başlatma
 
@@ -85,7 +79,7 @@ Proje Spring Boot ile geliştirildiği için, uygulamayı ayağa kaldırmak içi
 1. Proje kaynak kodlarını bilgisayarınıza indirin.
 2. PostgreSQL veritabanınızı oluşturun ve bağlantı bilgilerini `application.properties` dosyasında güncelleyin.
 3. Projeyi bir IDE'de (IntelliJ IDEA, Eclipse vb.) açın.
-4. `VeterinaryApp` sınıfını bulun ve çalıştırın.
+4. `VeterinaryAppApplication` sınıfını bulun ve çalıştırın.
 5. Uygulama başlatıldığında, [http://localhost:8080](http://localhost:8080/swagger-ui/index.html#/) adresinden API'ye erişebilirsiniz.
 
 ## API Endpoints
@@ -147,4 +141,4 @@ Aşağıda, API'nin sunduğu temel endpoint'lerin bir listesi bulunmaktadır:
 | /v1/appointments/{id}/findByDateAndDoctor  | GET         | Belirtilen tarih ve veteriner hekime göre randevuları getir |
 | /v1/appointments/{id}/findByDateAndAnimal  | GET         | Belirtilen tarih ve hayvana göre randevuları getir |
 
-## Resimleri incelemek için [tıklayınız](https://github.com/ismetonursahin/Week-12/tree/main/veterinary_app/img)
+## Görselleri incelemek için [tıklayınız](https://github.com/ismetonursahin/Week-12/tree/main/veterinary_app/img)
