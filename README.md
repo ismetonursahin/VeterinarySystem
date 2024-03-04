@@ -40,15 +40,6 @@ Veteriner Yönetim Sistemi, hayvan sahipleri, hayvanlar, veteriner hekimler, ran
 | IAppointmentRepo | Randevularla ilgili veritabanı işlemleri için arayüz |
 | IAnimalRepo | Randevularla ilgili veritabanı işlemleri için arayüz |
 
-### DTO / REQUEST-RESPONSE Tablosu:
-
-| DTO / Request-Response Adı | Açıklama                                    |
-|----------------------------|---------------------------------------------|
-| VaccineDTO                 | Aşı bilgilerini taşır                       |
-| DoctorDTO                  | Veteriner hekim bilgilerini taşır           |
-| CustomerDTO                | Hayvan sahibi bilgilerini taşır            |
-| AvailableDateDTO           | Müsait gün bilgilerini taşır               |
-| AppointmentDTO             | Randevu bilgilerini taşır                  |
 
 ### MANAGER Tablosu:
 
