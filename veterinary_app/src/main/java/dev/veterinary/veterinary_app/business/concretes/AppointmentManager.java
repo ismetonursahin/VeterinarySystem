@@ -36,18 +36,14 @@ public class AppointmentManager implements IAppointmentService {
         if (appointmentFromDb.isPresent()) {
             throw new NoSaveException(appointmentFromDb.get().getId(), Appointment.class);
         }
-
         // Değerlendirme Formu 22
-
         List<LocalDate> availableDates = appointment.getDoctor().getAvailableDateList().stream()
                 .map(AvailableDate::getAvailableDate)
                 .collect(Collectors.toList());
-
-
         LocalDate appointmentDate = appointment.getAppointmentDate().toLocalDate();
         if (availableDates.contains(appointmentDate)) {
-            LocalDateTime endDateTime = appointment.getAppointmentDate().plusHours(1);
             if (appointment.getAppointmentDate().getMinute() == 0 && appointment.getAppointmentDate().getSecond() == 0) {
+                LocalDateTime endDateTime = appointment.getAppointmentDate().plusHours(1);
                 Optional<Appointment> existingAppointment = this.appointmentRepo.findByDoctorAndAppointmentDateBetween(appointment.getDoctor(), appointment.getAppointmentDate(), endDateTime);
 
                 if (existingAppointment.isPresent()) {
@@ -55,16 +51,12 @@ public class AppointmentManager implements IAppointmentService {
                 } else {
                     return this.appointmentRepo.save(appointment);
                 }
-
             } else {
                 throw new NotFoundException("Sadece tam saatlerde randevu alınabilir.");
             }
-
         } else {
             throw new NotFoundException("Doktor bu tarihte çalışmamaktadır");
         }
-
-
     }
 
     @Override
